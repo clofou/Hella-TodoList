@@ -1,0 +1,74 @@
+:root{
+    --couleur-de-fond: #45BADD;
+    --couleur-principale: #FE3481;
+    --gris: #F5F5F5
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--couleur-de-fond);
+}
+
+@font-face {
+    font-family: 'MonJeju'; /* Nom de la police */
+    src: url('assets/fonts/JejuHallasan/jejuhallasan/JejuHallasan-Regular.ttf') format('truetype'); /* Chemin vers le fichier de police */
+    font-weight: normal; /* Poids de la police */
+    font-style: normal; /* Style de la police */
+}
+
+@font-face {
+    font-family: 'MonJua'; /* Nom de la police */
+    src: url('assets/fonts/JetBrains/Jua/Jua-Regular.ttf') format('truetype'); /* Chemin vers le fichier de police */
+    font-weight: normal; /* Poids de la police */
+    font-style: normal; /* Style de la police */
+}
+
+@font-face {
+    font-family: 'MonJetbrains'; /* Nom de la police */
+    src: url('assets/fonts/JetBrains/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf') format('truetype'); /* Chemin vers le fichier de police */
+    font-weight: normal; /* Poids de la police */
+    font-style: normal; /* Style de la police */
+}
+
+@font-face {
+    font-family: 'MonJulius'; /* Nom de la police */
+    src: url('assets/fonts/JetBrains/Julius_Sans_One/JuliusSansOne-Regular.ttf') format('truetype'); /* Chemin vers le fichier de police */
+    font-weight: normal; /* Poids de la police */
+    font-style: normal; /* Style de la police */
+}
+
+.jetbrains{
+    font-family: 'MonJetbrains'
+}
+
+#assistant{
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+}
+
+.footer{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 500px;
+    display: flex;
+    color: var(--gris);
+    align-items: center;
+    font-size: 32px;
+    justify-content: space-between;
+}
+
+
+
+
+
+@media only screen and (max-width: 1000px){
+    #assistant{
+        position: absolute;
+        bottom: 0;
+        right: 15px;;
+        
+    }
+}
