@@ -8,8 +8,9 @@ body{
     margin: 0;
     padding: 0;
     background-color: var(--couleur-de-fond);
+    font-family: 'MonJetbrains';
 }
-
+/* Declarations des polices generales */
 @font-face {
     font-family: 'MonJeju'; /* Nom de la police */
     src: url('assets/fonts/JejuHallasan/jejuhallasan/JejuHallasan-Regular.ttf') format('truetype'); /* Chemin vers le fichier de police */
@@ -38,15 +39,27 @@ body{
     font-style: normal; /* Style de la police */
 }
 
+
+
 .jetbrains{
-    font-family: 'MonJetbrains'
+    font-family: 'MonJetbrains';
+}
+.julius{
+    font-size: 15px;
+    font-family: 'MonJulius';
+}
+.jua{
+    font-family: 'MonJua';
+    color: var(--couleur-principale);
 }
 
 #assistant{
-    position: absolute;
-    bottom: 0;
-    right: 15px;
+    margin-left: 400px;
 }
+.center{
+    text-align: center;
+}
+
 
 .footer{
     position: absolute;
@@ -60,15 +73,63 @@ body{
     justify-content: space-between;
 }
 
+button{
+    background-color: var(--couleur-principale);
+    color: white;
+    padding: 12px 40px;
+    border: 0;
+    border-radius: 10px;
+    font-family: 'MonJetbrains';
+}
+
+.hellaDiscute{
+    display: flex;
+    flex-direction: column;
+    margin: 80px;
+    margin-left: 500px;
+    transition: 1s;
+    scale: 1;
+}
+
+.icone li{
+    border-radius: 20px;
+    padding: 20px;
+    background-color: black;
+    list-style-type: none;
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.displayContent{
+    background-color: white;
+    display: inline-block;
+    width: 400px;
+    padding: 40px;
+    border-radius: 40px;
+    position: relative;
+    font-family: 'MonJetbrains';
+    font-size:25px;
+    
+}
+.displayContent::after{
+    content: "";
+    width: 0;
+    
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;height: 0;
+    display: inline-block;
+    border-bottom: 40px solid white;
+    bottom: -5px;
+    position: absolute;
+    right: 0;
+    transform: rotate(40deg);
+}
+
+
 
 
 
 
 @media only screen and (max-width: 1000px){
-    #assistant{
-        position: absolute;
-        bottom: 0;
-        right: 15px;;
-        
-    }
+    
 }

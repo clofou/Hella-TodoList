@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,38 @@
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
 </head>
+
 <body>
-    <div id="corps">
+    <div onmouseenter="dialog()" id="corps">
         <div class="hellaDiscute">
-            <img id="assistant" src="assets/images/hella.gif" alt="Image anime de l'assistant">
-            <div class="dialogContent"></div>
+            <div class="displayContent"></div>
+            <div class="hella"><img id="assistant" src="assets/images/hella.gif" alt="Image anime de l'assistant"></div>
+            
         </div>
         <div class="footer jetbrains">
             <img src="assets/images/container.png" alt="Contient la liste des taches">
             <p>Liste Des Taches</p>
         </div>
     </div>
+    <div class="form">
+        <input type="text">
+        <div class="date">
+            <label for="date">Date d'echeance</label>
+            <input type="date">
+        </div>
+        <div class="priorite">
+            <label for="priorite">Priorite</label>
+            <div class="icone">
+                <input type="radio" name="prio" id="prio">
+                <label name="prio"><img src="assets/images/PrioriteEleve.png" alt=""></label>
+                <input type="radio" name="prio" id="prio1">
+                <label name="prio"><img src="assets/images/moyen.png" alt=""></label>
+                <input type="radio" name="prio" id="prio2">
+                <label name="prio"><img src="assets/images/PrioriteFaible.png" alt=""></label>
+            </div>
+        </div>
+        
+    </div>
 </body>
+
 </html>
