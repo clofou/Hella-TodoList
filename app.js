@@ -1,5 +1,18 @@
-let todosInStorage = localStorage.getItem('todos')
-let todos = todosInStorage ? JSON.parse(todosInStorage) : []
+function hideAll(){
+    first.style.display = 'none'
+    second.style.display = 'none'
+    third.style.display = 'none'
+    four.style.display = 'none'
+    retour.style.display = 'none'
+    footer.style.display = 'none'
+}
+
+function display(...a){
+    hideAll()
+    for(let el of a){
+        el.style.display = "flex"
+    }
+}
 
 const dialogContent = document.querySelector('.displayContent')
 const first = document.querySelector('.first')
@@ -11,106 +24,45 @@ const todoList = document.querySelector('.todoList')
 const retour = document.querySelector('.retour')
 const footer = document.querySelector('.footer')
 
+// Decteter le click sur le bouton
 let controller = 0
-
-function ajouterTache(){
-    
-}
+    const maFonction = function(event) {
+        if (event.code === 'Space') {
+            first.style.display = 'none'
+            document.removeEventListener('keydown', maFonction)
+            dialogContent.style.textAlign = 'center'
+            display(second, footer)
+        console.log(controller);
+        // Empêcher le défilement de la page lorsque la touche Espace est pressée
+        event.preventDefault();
+        }}
+    if (controller === 0) {
+        document.addEventListener('keydown', maFonction)
+        controller = 1
+    }
+//
 
 todoList.addEventListener("click", () => {
-    console.log("Todolist")
-    first.style.display = 'none'
-    second.style.display = 'none'
-    third.style.display = 'none'
-    retour.style.display = 'block'
-    footer.style.display = 'none'
-
-    const ul = document.querySelector(".four ul")
-    console.log(todos)
-    
-    retour.addEventListener("click", ()=>{
-        first.style.display = 'none'
-        second.style.display = 'block'
-        third.style.display = 'none'
-        retour.style.display = 'none'
-        four.style.display = 'none'
-        footer.style.display = 'none'
-        retour.style.display = 'none'
-        footer.style.display = 'flex'
-        ul.innerHTML =""
-    })
-
-    for(let a of todos){
-
-        const li = document.createElement('li')
-        li.innerHTML = `<div class="gauche">
-        <h3>${a.tacheName} <img src="${a.priorite == 'eleve' ? 'assets/images/PrioriteEleve.png': a.priorite=='moyen' ? 'assets/images/moyen.png':'assets/images/PrioriteFaible.png'}" alt=""></h3>
-    </div>
-    <div class="droite">
-        <img src="assets/images/pen.png" alt="">
-        <img src="assets/images/delete.png" alt="" class="suppr${a.id} modif${a.id}">
-    </div>`
-        ul.append(li)
-        let hhh = '.suppr'+a.id
-        supprel = document.querySelector(hhh)
-        supprel.addEventListener("click", ()=>{
-            console.log("Hellp " + a.id)
-            todos.splice(a.id, 1)
-            localStorage.setItem('todos', JSON.stringify(todos))
-        })
-        
-        four.style.display = 'block'
-    }
-    
+    display(retour, four)
+    Tache.displayAllTache()
 })
 
-const maFonction = function(event) {
-    if (event.code === 'Space') {
-        first.style.display = 'none'
-        document.removeEventListener('keydown', maFonction)
-        dialogContent.style.textAlign = 'center'
-        second.style.display = 'block'
-      console.log(controller);
-      // Empêcher le défilement de la page lorsque la touche Espace est pressée
-      event.preventDefault();
-    }}
+retour.addEventListener("click", () => display(second, footer))
 
-if (controller === 0) {
-    document.addEventListener('keydown', maFonction)
-    controller = 1
-}
-
-second.addEventListener("click", () => {
-    second.style.display = 'none'
-    third.style.display = 'flex'
-})
+second.addEventListener("click", () => display(third, footer))
  
 boutonAjouterTache.addEventListener("click", () => {
     const nameTodos = document.querySelector('.nameTodos')
     const dateEcheance = document.querySelector('.dateEcheance')
     const priorite = document.querySelector('input[name="prio"]:checked')
-    console.log(nameTodos.value, dateEcheance.value, priorite?.value)
+    
 
     if (nameTodos.value != '' && dateEcheance.value != '' && priorite?.value != undefined) {
-        console.log(todos[0])
+       new Tache(nameTodos.value, dateEcheance.value, priorite.value, "En Cours")
         
-        const newTodos = [
-            {
-                id: todos[0]?.id == undefined ? 0 : todos[0]?.id +1,
-                tacheName: nameTodos.value,
-                dateEcheance: dateEcheance.value,
-                priorite: priorite.value,
-            },
-            ...todos
-        ]
-        localStorage.setItem('todos', JSON.stringify(newTodos))
-        second.style.display = 'block'
-        third.style.display = 'none'
+        display(second, footer)
         nameTodos.value = ''
         dateEcheance.value = ''
-        priorite.value = undefined
-        todosInStorage = localStorage.getItem('todos')
-        todos = todosInStorage ? JSON.parse(todosInStorage) : []
     }
 
     
