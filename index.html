@@ -10,36 +10,50 @@
 </head>
 
 <body>
-    <div onmouseenter="dialog()" id="corps">
+    <div id="corps">
+        <div class="retour" style="display: none;">Retour</div>
         <div class="hellaDiscute">
-            <div class="displayContent"></div>
+            <div class="displayContent">
+                <div class="content first">Salut Je suis Hella, Vôtre assistant personnelle pour creer des taches !<br><br> <p class='julius'>Cliquez sur <span class='jua'>Espace</span> pour Continuer</p>
+                </div>
+                <button class="second content" style="display: none;" class='center'>Ajouter Une Tache</button>
+                <div class="third content" style="display: none;" class="form">
+                    <input type="text" class="nameTodos">
+                    <div class="date">
+                        <label for="date">Date d'echeance</label>
+                        <input type="date" class="dateEcheance">
+                    </div>
+                    <div hidden class="priorite">
+                        <label for="priorite">Priorite</label>
+                        <div class="icone">
+                            <input type="radio" value="eleve" name="prio" id="prio">
+                            <label name="prio"><img src="assets/images/Vert.png" alt=""></label>
+                            <input type="radio" value="moyen" name="prio" id="prio1">
+                            <label name="prio"><img src="assets/images/PrioriteOrange.png" alt=""></label>
+                            <input type="radio" value="faible" name="prio" id="prio2">
+                            <label name="prio"><img src="assets/images/PrioriteRed.png" alt=""></label>
+                        </div>
+                    </div>
+                    <button class="boutonAjouterTache">Ajouter</button>
+                    
+                </div>
+                <div class="four" style="display: none;" >
+                    <h2>Voici la liste des taches</h2>
+                    <ul>
+                        
+                    </ul>
+                    
+                </div>
+            </div>
             <div class="hella"><img id="assistant" src="assets/images/hella.gif" alt="Image anime de l'assistant"></div>
             
         </div>
         <div class="footer jetbrains">
-            <img src="assets/images/container.png" alt="Contient la liste des taches">
+            <img class="todoList" src="assets/images/container.png" alt="Contient la liste des taches">
             <p>Liste Des Taches</p>
         </div>
     </div>
-    <div class="form">
-        <input type="text">
-        <div class="date">
-            <label for="date">Date d'echeance</label>
-            <input type="date">
-        </div>
-        <div class="priorite">
-            <label for="priorite">Priorite</label>
-            <div class="icone">
-                <input type="radio" name="prio" id="prio">
-                <label name="prio"><img src="assets/images/PrioriteEleve.png" alt=""></label>
-                <input type="radio" name="prio" id="prio1">
-                <label name="prio"><img src="assets/images/moyen.png" alt=""></label>
-                <input type="radio" name="prio" id="prio2">
-                <label name="prio"><img src="assets/images/PrioriteFaible.png" alt=""></label>
-            </div>
-        </div>
-        
-    </div>
+    
 </body>
 
 </html>
