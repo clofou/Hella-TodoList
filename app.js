@@ -38,6 +38,7 @@ let controller = 0
         }}
     if (controller === 0) {
         document.addEventListener('keydown', maFonction)
+        dialogContent.style.textAlign = 'center'
         controller = 1
     }
 //
@@ -64,7 +65,6 @@ boutonAjouterTache.addEventListener("click", () => {
         nameTodos.value = ''
         dateEcheance.value = ''
     }
-
     
 })
 

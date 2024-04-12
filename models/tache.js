@@ -58,21 +58,14 @@ class Tache{
         
     }
 
-    static removeFromList(liste,id){
-        for (let i = 0; i < liste.length; i++) {
-            if (liste[i].id === id) {
-                liste.splice(i,1)
-                break
-            }
-        }
-    }
+    
 
     static removeTacheAtIndex(id){
 
         // Effacer du local storage
         const todosInStorage = localStorage.getItem('todos')
         let todos = todosInStorage ? JSON.parse(todosInStorage) : []
-        this.removeFromList(todos, id)
+        removeFromList(todos, id)
         localStorage.setItem('todos', JSON.stringify(todos))
 
         // Effacer de la liste
