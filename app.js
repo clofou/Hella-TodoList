@@ -14,34 +14,27 @@ function display(...a){
     }
 }
 
-const dialogContent = document.querySelector('.displayContent')
 const first = document.querySelector('.first')
 const second = document.querySelector('.second')
 const third = document.querySelector('.third')
 const four = document.querySelector('.four')
+
 const boutonAjouterTache = document.querySelector('.boutonAjouterTache')
 const todoList = document.querySelector('.todoList')
+const dialogContent = document.querySelector('.displayContent')
+
 const retour = document.querySelector('.retour')
 const footer = document.querySelector('.footer')
 
-// Decteter le click sur le bouton
-let controller = 0
-    const maFonction = function(event) {
-        if (event.code === 'Space') {
-            first.style.display = 'none'
-            document.removeEventListener('keydown', maFonction)
-            dialogContent.style.textAlign = 'center'
-            display(second, footer)
-        console.log(controller);
-        // Empêcher le défilement de la page lorsque la touche Espace est pressée
-        event.preventDefault();
-        }}
-    if (controller === 0) {
-        document.addEventListener('keydown', maFonction)
+// Decteter le click sur le bouton Espace
+document.addEventListener('keydown', function(event) {
+    if (event.code === 'Space') {
+        first.style.display = 'none'
         dialogContent.style.textAlign = 'center'
-        controller = 1
-    }
-//
+        display(second, footer)
+    // Empêcher le défilement de la page lorsque la touche Espace est pressée
+    event.preventDefault();
+    }}, {once: true})
 
 todoList.addEventListener("click", () => {
     display(retour, four)
