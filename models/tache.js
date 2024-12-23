@@ -6,14 +6,13 @@ class Tache{
         this.dateEcheance = dateEcheance
         this.priorite= priorite
         this.status = status
-        this.#saveTacheToLocalStorage()
 
     }
 
-    #saveTacheToLocalStorage(){
+    saveTacheToLocalStorage(){
         const todosInStorage = localStorage.getItem('todos')
         let todos = todosInStorage ? JSON.parse(todosInStorage) : []
-        this.id = todos[todos.length-1]?.id == undefined ? 0 : todos[todos.length-1]?.id +1
+        this.id = todos[todos.length-1]?.id === undefined ? 0 : todos[todos.length-1]?.id +1
         const newTodos = [
             ...todos,
             {
@@ -25,6 +24,22 @@ class Tache{
             }
         ]
         localStorage.setItem('todos', JSON.stringify(newTodos))
+    }
+
+    modifyTacheToLocalStorage(){
+        const todosInStorage = localStorage.getItem('todos')
+        let todos = todosInStorage ? JSON.parse(todosInStorage) : []
+
+
+        todos.forEach((value, key) => {
+            if (value.id === this.id){
+                todos[key].id = this.id
+                todos[key].tacheName = this.nomTache
+                todos[key].dateEcheance = this.dateEcheance
+                todos[key].priorite = this.priorite
+            }
+        })
+        localStorage.setItem('todos', JSON.stringify(todos))
     }
 
     static displayAllTache(){
@@ -40,20 +55,26 @@ class Tache{
             li.setAttribute('id', `el${el.id}`)
             li.innerHTML = `
                 <div class="gauche">
-                <h3>${el.tacheName} <img src="${el.priorite == 'eleve' ? 'assets/images/PrioriteEleve.png': el.priorite=='moyen' ? 'assets/images/moyen.png':'assets/images/PrioriteFaible.png'}" alt=""></h3>
+                <h3>${el.tacheName} <img src="${el.priorite === 'eleve' ? 'assets/images/PrioriteEleve.png': el.priorite==='moyen' ? 'assets/images/moyen.png':'assets/images/PrioriteFaible.png'}" alt=""></h3>
                 </div>
                 <div class="droite">
-                    <img src="assets/images/pen.png" alt="">
-                    <img src="assets/images/delete.png" alt="" class="suppr${el.id} modif${el.id}">
+                    <img src="assets/images/pen.png" alt="" class="modif${el.id}">
+                    <img src="assets/images/delete.png" alt="" class="suppr${el.id}">
                 </div>
             `
             ul.append(li)
             const zz = document.querySelector(`.suppr${el.id}`)
+            const mm = document.querySelector(`.modif${el.id}`)
+
+
             zz.addEventListener("click", ()=>{
                 Tache.removeTacheAtIndex(el.id)
             })
 
-            console.log(zz)
+            mm.addEventListener("click", () => {
+                Tache.displayModifierTache(el.id, el.tacheName, el.dateEcheance, el.priorite, el.status)
+            })
+
         }
         
     }
@@ -70,9 +91,37 @@ class Tache{
 
         // Effacer de la liste
         const li = document.querySelector(`#el${id}`)
-        console.log(li)
         const ul = document.querySelector('#listeTache')
         ul.removeChild(li)
+
+    }
+
+    //TODO: Implementer la fonction de modification, l'affichage et la modif dans le localStorage
+    static displayModifierTache(id, nomTache, dateE, priorite, status){
+
+        const annuler = document.querySelector('.annuler')
+
+
+
+
+        //Afficher le bouton Annuler
+        display(third, annuler)
+
+        boutonAjouterOuModifier.innerText = "Modifier Tache"
+            // Sur annulation on revient a la liste
+
+        // Afficher le formulaire de modification avec les champs preremplit
+        nameTodos.value = nomTache
+        dateEcheance.value = dateE
+        prioriteM.forEach(value => {
+            if (value.value === priorite){
+                value.checked = true;
+            }
+        })
+        idG = id
+
+        // creer le bouton pour modifier dans le localStorage
+            // Le bouton reaffichera le display
 
     }
 }
